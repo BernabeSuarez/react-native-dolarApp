@@ -1,4 +1,4 @@
-import create from "zustand";
+import { create } from "zustand";
 import { IDolar } from "../interfaces/dolar";
 
 interface DolarState {
