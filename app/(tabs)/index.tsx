@@ -1,8 +1,6 @@
 import { Text, View, ScrollView } from "react-native";
-import { useEffect, useState } from "react";
-import { useDolarStore } from "@/store/dolarStore";
+
 import { Link } from "expo-router";
-import { DolarCard } from "../components/DolarCard";
 
 export default function Index() {
   return (
