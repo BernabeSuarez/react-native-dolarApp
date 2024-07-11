@@ -1,4 +1,5 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { MaterialIcons } from "@expo/vector-icons";
 
 import { Tabs } from "expo-router";
 export default function TabLayout() {
@@ -27,7 +28,7 @@ export default function TabLayout() {
         options={{
           title: "Convertidor",
           tabBarIcon: ({ color }) => (
-            <FontAwesome name="arrows-alt" size={24} color={color} />
+            <MaterialIcons name="currency-exchange" size={24} color={color} />
           ),
         }}
       />
