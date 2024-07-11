@@ -1,8 +1,15 @@
 import { Text, View, ScrollView, ImageBackground } from "react-native";
 
 import { Link } from "expo-router";
+import { useEffect } from "react";
+import { useDolarStore } from "@/store/dolarStore";
 
 export default function Index() {
+  const { getDolars } = useDolarStore();
+
+  useEffect(() => {
+    getDolars();
+  }, [getDolars]);
   return (
     <View className="flex-1 bg-slate-800 pt-8 ">
       <View className="flex-1 ipx-6 py-8 px-4">

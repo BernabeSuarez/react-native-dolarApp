@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { IDolar } from "@/interfaces/dolar";
 
 export default function Convert() {
-  const { dolars, setDolars } = useDolarStore();
+  const { dolars } = useDolarStore();
   const [rotate, setRotate] = useState(true);
   const [total, setTotal] = useState(0);
   const [pesos, setPesos] = useState("");
@@ -16,16 +16,6 @@ export default function Convert() {
     setIsSwitchOn(!isSwitchOn);
     setTotal(0);
     setPesos("");
-  };
-
-  const fetchDolars = async (setDolars: (dolars: IDolar[]) => void) => {
-    try {
-      const response = await fetch("https://dolarapi.com/v1/dolares");
-      const data = await response.json();
-      setDolars(data);
-    } catch (error) {
-      console.error(error);
-    }
   };
 
   const handleChange = (text: string) => {
@@ -66,23 +56,6 @@ export default function Convert() {
     const total = parseFloat(pesos) * dolarBlue;
     setTotal(total);
     setPesos("");
-  }
-
-  const getDolars = async () => {
-    await fetchDolars(setDolars);
-    setLoad(false);
-  };
-
-  useEffect(() => {
-    getDolars();
-  }, []);
-
-  if (load) {
-    return (
-      <View className="flex-1 items-center justify-center bg-slate-800 pt-8 px-4">
-        <ActivityIndicator size={"large"} animating color="#22c55e" />
-      </View>
-    );
   }
 
   return (
@@ -133,7 +106,7 @@ export default function Convert() {
               textColor="black"
               buttonColor="#22c55e"
               rippleColor={"#07441d"}
-              onPress={() => (isSwitchOn ? convert(pesos) : convertBlue(pesos))}
+              onPress={() => (isSwitchOn ? convertBlue(pesos) : convert(pesos))}
             >
               Convertir
             </Button>
@@ -185,7 +158,7 @@ export default function Convert() {
               buttonColor="#22c55e"
               rippleColor={"#07441d"}
               onPress={() =>
-                isSwitchOn ? convertDolarBlue(pesos) : convertDolar(pesos)
+                isSwitchOn ? convertDolar(pesos) : convertDolarBlue(pesos)
               }
             >
               Convertir
