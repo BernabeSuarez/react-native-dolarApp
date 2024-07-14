@@ -6,10 +6,9 @@ import { IDolar } from "@/interfaces/dolar";
 
 export default function Convert() {
   const { dolars } = useDolarStore();
-  const [rotate, setRotate] = useState(true);
+  const [rotate, setRotate] = useState(false);
   const [total, setTotal] = useState(0);
   const [pesos, setPesos] = useState("");
-  const [load, setLoad] = useState(true);
   const [isSwitchOn, setIsSwitchOn] = useState(false);
 
   const onToggleSwitch = () => {
@@ -34,28 +33,24 @@ export default function Convert() {
     const dolarOficial = parseFloat(dolars[0].venta);
     const total = parseFloat(pesos) / dolarOficial;
     setTotal(total);
-    setPesos("");
   }
 
   function convertDolar(pesos: string) {
     const dolarOficial = parseFloat(dolars[0].venta);
     const total = parseFloat(pesos) * dolarOficial;
     setTotal(total);
-    setPesos("");
   }
 
   function convertBlue(pesos: string) {
     const dolarBlue = parseFloat(dolars[1].venta);
     const total = parseFloat(pesos) / dolarBlue;
     setTotal(total);
-    setPesos("");
   }
 
   function convertDolarBlue(pesos: string) {
     const dolarBlue = parseFloat(dolars[1].venta);
     const total = parseFloat(pesos) * dolarBlue;
     setTotal(total);
-    setPesos("");
   }
 
   return (
@@ -63,6 +58,18 @@ export default function Convert() {
       <Text className="text-2xl font-bold text-white">Convertidor</Text>
       {rotate ? (
         <View className="w-full mt-8">
+          <View className="flex-row items-center justify-between">
+            <Text className="text-lg text-center mb-3 font-bold text-white">
+              Pesos a Dolares
+            </Text>
+            <IconButton
+              icon="rotate-3d-variant"
+              size={25}
+              className="bg-slate-700"
+              rippleColor={"#22c55e"}
+              onPress={rotateView}
+            />
+          </View>
           <View className="w-full">
             <TextInput
               mode="outlined"
@@ -79,30 +86,17 @@ export default function Convert() {
                 <TextInput.Affix text="$" textStyle={{ color: "#f7f7f7" }} />
               }
             />
-            <IconButton
-              icon="rotate-3d-variant"
-              size={35}
-              className="bg-slate-700"
-              rippleColor={"#22c55e"}
-              onPress={rotateView}
-            />
-
-            <TextInput
-              mode="flat"
-              label="Dolares"
-              className="mt-5"
-              textColor="white"
-              value={total > 0 ? total.toFixed(2) : "0.00"}
-              disabled
-              left={
-                <TextInput.Affix text="$" textStyle={{ color: "#f7f7f7" }} />
-              }
-            />
+            <View className="flex-col bg-slate-600 rounded-md p-1 border-2 border-slate-300 justify-between mt-4">
+              <Text className=" text-sm text-white text-start">Dolares</Text>
+              <Text className="text-2xl font-bold text-white">
+                ${total.toFixed(2)}
+              </Text>
+            </View>
           </View>
           <View className="w-full mt-6">
             <Button
               mode="contained"
-              className="w-full rounded-md"
+              className="w-full rounded-md mt-4"
               textColor="black"
               buttonColor="#22c55e"
               rippleColor={"#07441d"}
@@ -114,6 +108,18 @@ export default function Convert() {
         </View>
       ) : (
         <View className="w-full mt-8">
+          <View className="flex-row items-center justify-between">
+            <Text className="text-lg text-center mb-3 font-bold text-white">
+              Dolares a Pesos
+            </Text>
+            <IconButton
+              icon="rotate-3d-variant"
+              size={25}
+              className="bg-slate-700"
+              rippleColor={"#22c55e"}
+              onPress={rotateView}
+            />
+          </View>
           <View className="w-full">
             <TextInput
               mode="outlined"
@@ -131,34 +137,23 @@ export default function Convert() {
                 <TextInput.Affix text="$" textStyle={{ color: "#f7f7f7" }} />
               }
             />
-            <IconButton
-              icon="rotate-3d-variant"
-              size={35}
-              className="bg-slate-700"
-              rippleColor={"#22c55e"}
-              onPress={rotateView}
-            />
-            <TextInput
-              mode="flat"
-              label="Pesos Argentinos"
-              className="bg-slate-700 mt-5"
-              textColor="white"
-              disabled
-              value={total > 0 ? total.toFixed(2) : "0.00"}
-              left={
-                <TextInput.Affix text="$" textStyle={{ color: "#f7f7f7" }} />
-              }
-            />
+
+            <View className="flex-col bg-slate-600 rounded-md p-1 border-2 border-slate-300 justify-between mt-4">
+              <Text className=" text-sm text-white text-start">Pesos</Text>
+              <Text className="text-2xl font-bold text-white">
+                ${total.toFixed(2)}
+              </Text>
+            </View>
           </View>
           <View className="w-full mt-6">
             <Button
               mode="contained"
-              className="w-full rounded-md"
+              className="w-full rounded-md mt-4"
               textColor="black"
               buttonColor="#22c55e"
               rippleColor={"#07441d"}
               onPress={() =>
-                isSwitchOn ? convertDolar(pesos) : convertDolarBlue(pesos)
+                isSwitchOn ? convertDolarBlue(pesos) : convertDolar(pesos)
               }
             >
               Convertir
@@ -173,21 +168,31 @@ export default function Convert() {
             <Switch
               value={isSwitchOn}
               onValueChange={onToggleSwitch}
-              color="#22c55e"
+              color="#2263c5"
             />
           </View>
           {isSwitchOn ? (
-            <Text className="text-white">Dolar blue: $ {dolars[1].venta}</Text>
+            <Text className="text-white">
+              Cotizacion Dolar blue: $ {dolars[1].venta}
+            </Text>
           ) : (
             <Text className="text-white">
-              Dolar oficial: $ {dolars[0].venta}
+              Cotizacion Dolar oficial: $ {dolars[0].venta}
             </Text>
           )}
         </View>
       )}
       {total > 0 && (
         <View className="w-full mt-6">
-          <Text className="text-white">Total: ${total.toFixed(2)}</Text>
+          {rotate ? (
+            <Text className="text-white">
+              ${pesos} pesos equivalen a: ${total.toFixed(2)} dolares
+            </Text>
+          ) : (
+            <Text className="text-white">
+              ${pesos} dolares equivalen a: ${total.toFixed(2)} pesos
+            </Text>
+          )}
         </View>
       )}
     </View>
