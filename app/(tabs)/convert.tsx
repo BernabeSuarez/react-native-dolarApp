@@ -21,6 +21,17 @@ export default function Convert() {
     // Allow only numbers
     const numericValue = text.replace(/[^0-9]/g, "");
     setPesos(numericValue);
+
+    if (numericValue !== "") {
+      // Call the appropriate conversion function based on rotate and isSwitchOn
+      if (rotate) {
+        isSwitchOn ? convertBlue(numericValue) : convert(numericValue);
+      } else {
+        isSwitchOn
+          ? convertDolarBlue(numericValue)
+          : convertDolar(numericValue);
+      }
+    }
   };
 
   const rotateView = () => {
@@ -55,7 +66,7 @@ export default function Convert() {
 
   return (
     <View className="flex-1 items-center bg-slate-800 pt-8 px-4">
-      <Text className="text-2xl font-bold text-white">Convertidor</Text>
+      <Text className="text-2xl font-bold text-white mt-10">Convertidor</Text>
       {rotate ? (
         <View className="w-full mt-8">
           <View className="flex-row items-center justify-between">
@@ -92,18 +103,6 @@ export default function Convert() {
                 ${total.toFixed(2)}
               </Text>
             </View>
-          </View>
-          <View className="w-full mt-6">
-            <Button
-              mode="contained"
-              className="w-full rounded-md mt-4"
-              textColor="black"
-              buttonColor="#22c55e"
-              rippleColor={"#07441d"}
-              onPress={() => (isSwitchOn ? convertBlue(pesos) : convert(pesos))}
-            >
-              Convertir
-            </Button>
           </View>
         </View>
       ) : (
@@ -145,20 +144,6 @@ export default function Convert() {
               </Text>
             </View>
           </View>
-          <View className="w-full mt-6">
-            <Button
-              mode="contained"
-              className="w-full rounded-md mt-4"
-              textColor="black"
-              buttonColor="#22c55e"
-              rippleColor={"#07441d"}
-              onPress={() =>
-                isSwitchOn ? convertDolarBlue(pesos) : convertDolar(pesos)
-              }
-            >
-              Convertir
-            </Button>
-          </View>
         </View>
       )}
       {dolars && (
@@ -172,13 +157,43 @@ export default function Convert() {
             />
           </View>
           {isSwitchOn ? (
-            <Text className="text-white">
-              Cotizacion Dolar blue: $ {dolars[1].venta}
-            </Text>
+            <View>
+              <Text className="text-white">
+                Cotizacion Dolar blue: $ {dolars[1].venta}
+              </Text>
+              <Text className="text-slate-300 text-xs ">
+                ultima actualizacion:{" "}
+                {new Date(dolars[1].fechaActualizacion).toLocaleString(
+                  "es-AR",
+                  {
+                    year: "2-digit",
+                    month: "numeric",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  }
+                )}
+              </Text>
+            </View>
           ) : (
-            <Text className="text-white">
-              Cotizacion Dolar oficial: $ {dolars[0].venta}
-            </Text>
+            <View>
+              <Text className="text-white">
+                Cotizacion Dolar oficial: $ {dolars[0].venta}
+              </Text>
+              <Text className="text-slate-300 text-xs ">
+                ultima actualizacion:{" "}
+                {new Date(dolars[0].fechaActualizacion).toLocaleString(
+                  "es-AR",
+                  {
+                    year: "2-digit",
+                    month: "numeric",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  }
+                )}
+              </Text>
+            </View>
           )}
         </View>
       )}
