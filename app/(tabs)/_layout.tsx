@@ -41,6 +41,15 @@ export default function TabLayout() {
           ),
         }}
       />
+      <Tabs.Screen
+        name="otrasCot"
+        options={{
+          title: "Mas Monedas",
+          tabBarIcon: ({ color }) => (
+            <FontAwesome name="euro" size={24} color={color} />
+          ),
+        }}
+      />
     </Tabs>
   );
 }

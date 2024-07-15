@@ -1,15 +1,17 @@
-import { Text, View, ScrollView, ImageBackground } from "react-native";
-
+import { Text, View } from "react-native";
 import { Link } from "expo-router";
 import { useEffect } from "react";
-import { useDolarStore } from "@/store/dolarStore";
+import { useDolarStore, useMoneyStore } from "@/store/dolarStore";
 
 export default function Index() {
   const { getDolars } = useDolarStore();
+  const { getMoney } = useMoneyStore();
 
   useEffect(() => {
     getDolars();
-  }, [getDolars]);
+    getMoney();
+  }, [getDolars, getMoney]);
+
   return (
     <View className="flex-1 bg-slate-800 pt-8 ">
       <View className="flex-1 ipx-6 py-8 px-4">
