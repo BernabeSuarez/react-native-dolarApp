@@ -24,7 +24,7 @@ export const useDolarStore = create<DolarState>((set) => ({
   setDolars: (dolars) => set({ dolars }),
   getDolars: async () => {
     try {
-      const response = await fetch("https://dolarapi.com/v1/dolares");
+      const response = await fetch("https://dolarapi.com/v1/ambito/dolares");
       const data = await response.json();
       set({ dolars: data });
     } catch (error) {

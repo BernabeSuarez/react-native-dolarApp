@@ -66,7 +66,9 @@ export default function Convert() {
 
   return (
     <View className="flex-1 items-center bg-slate-800 pt-8 px-4">
-      <Text className="text-2xl font-bold text-white mt-10">Convertidor</Text>
+      <Text className="text-2xl font-bold text-[#9EDED8] mt-10">
+        Convertidor
+      </Text>
       {rotate ? (
         <View className="w-full mt-8">
           <View className="flex-row items-center justify-between">
@@ -77,7 +79,7 @@ export default function Convert() {
               icon="rotate-3d-variant"
               size={25}
               className="bg-slate-700"
-              rippleColor={"#22c55e"}
+              rippleColor={"#9EDED8"}
               onPress={rotateView}
             />
           </View>
@@ -88,10 +90,10 @@ export default function Convert() {
               onChangeText={handleChange}
               keyboardType="numeric"
               outlineColor="#f7f7f7"
-              selectionColor="#22c55e"
+              selectionColor="#9EDED8"
               className="bg-slate-700 mb-5"
               textColor="white"
-              activeOutlineColor="#22c55e"
+              activeOutlineColor="#9EDED8"
               value={pesos}
               left={
                 <TextInput.Affix text="$" textStyle={{ color: "#f7f7f7" }} />
@@ -115,7 +117,7 @@ export default function Convert() {
               icon="rotate-3d-variant"
               size={25}
               className="bg-slate-700"
-              rippleColor={"#22c55e"}
+              rippleColor={"#9EDED8"}
               onPress={rotateView}
             />
           </View>
@@ -127,10 +129,10 @@ export default function Convert() {
               keyboardType="numeric"
               outlineColor="#f7f7f7"
               underlineColor="#f7f7f7"
-              selectionColor="#22c55e"
+              selectionColor="#9EDED8"
               className="bg-slate-700 mb-5"
               textColor="white"
-              activeOutlineColor="#22c55e"
+              activeOutlineColor="#9EDED8"
               value={pesos}
               left={
                 <TextInput.Affix text="$" textStyle={{ color: "#f7f7f7" }} />
@@ -153,7 +155,7 @@ export default function Convert() {
             <Switch
               value={isSwitchOn}
               onValueChange={onToggleSwitch}
-              color="#2263c5"
+              color="#9EDED8"
             />
           </View>
           {isSwitchOn ? (

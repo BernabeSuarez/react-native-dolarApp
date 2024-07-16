@@ -9,7 +9,7 @@ export const MoneyCard = ({ money }: { money: IMoney }) => {
       className="flex-1 flex-row items-center justify-between rounded-lg w-screen px-4"
     >
       <View className="h-12 w-12 flex items-center justify-center rounded-md bg-slate-700 ">
-        <FontAwesome name="dollar" size={28} color="#22c55e" />
+        <FontAwesome name="dollar" size={28} color="#9EDED8" />
       </View>
       <View className="p-2 flex-1 flex-col">
         <Text className="text-md font-medium text-white">{money.nombre}</Text>
