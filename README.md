@@ -1,50 +1,80 @@
-# Welcome to your Expo app 👋
+# Dólar App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Dólar App es una aplicación en React Native que te permite consultar las cotizaciones actuales del dólar en Argentina. La aplicación te muestra las diferentes cotizaciones del dólar, incluyendo Oficial, Blue, MEP, CCL y Mayorista, todas actualizadas en tiempo real.
 
-## Get started
+## Características
 
-1. Install dependencies
+-   **Cotizaciones del dólar**: Consulta las cotizaciones actualizadas del dólar en Argentina, incluyendo Oficial, Blue, MEP, CCL y Mayorista.
+-   **Conversor de divisas**: Convierte Pesos Argentinos a Dólares y viceversa de manera precisa y fácil.
+-   **Actualización en tiempo real**: Mantén un seguimiento constante de las cotizaciones con datos actualizados al minuto.
 
-   ```bash
-   npm install
-   ```
+## Instalación
 
-2. Start the app
+Sigue estos pasos para instalar y ejecutar la aplicación en tu entorno local:
 
-   ```bash
-    npx expo start
-   ```
+1.  Clona este repositorio:
+    
+    bash
+    
+    Copiar código
+    
+    `git clone https://github.com/tu-usuario/dolar-app.git` 
+    
+2.  Navega al directorio del proyecto:
+    
+    bash
+    
+    Copiar código
+    
+    `cd dolar-app` 
+    
+3.  Instala las dependencias necesarias:
+    
+    bash
+    
+    Copiar código
+    
+    `npm install` 
+    
+4.  Inicia la aplicación:
+    
+    bash
+    
+    Copiar código
+    
+    `npm start` 
+    
 
-In the output, you'll find options to open the app in a
+## Uso
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Una vez que la aplicación esté corriendo, puedes explorar las cotizaciones del dólar y utilizar el conversor de divisas.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+1.  **Ver cotizaciones**: Navega a la sección "Ver cotizaciones" para consultar las cotizaciones del día en Argentina.
+2.  **Convertir divisas**: Utiliza la herramienta de conversión para convertir entre Pesos Argentinos y Dólares.
 
-## Get a fresh project
+## Estructura del Proyecto
 
-When you're ready, run:
+-   **`/store`**: Contiene los stores de la aplicación para manejar el estado global de las cotizaciones y conversiones.
+-   **`/screens`**: Pantallas principales de la aplicación.
+-   **`Index.js`**: Punto de entrada principal que carga los datos iniciales y muestra la pantalla principal.
 
-```bash
-npm run reset-project
-```
+## Tecnologías Utilizadas
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+-   **React Native**: Framework principal para la construcción de la aplicación móvil.
+-   **Expo Router**: Utilizado para la navegación dentro de la aplicación.
+-   **Zustand**: Librería para el manejo de estado global.
+-   **Tailwind CSS**: Utilizado a través de `className` para estilizar los componentes.
 
-## Learn more
+## Contribuciones
 
-To learn more about developing your project with Expo, look at the following resources:
+Las contribuciones son bienvenidas. Si deseas contribuir, por favor, sigue estos pasos:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+1.  Haz un fork del proyecto.
+2.  Crea una nueva rama (`git checkout -b feature/nueva-funcionalidad`).
+3.  Realiza los cambios necesarios y realiza un commit (`git commit -m 'Añadir nueva funcionalidad'`).
+4.  Empuja los cambios a la rama (`git push origin feature/nueva-funcionalidad`).
+5.  Abre un Pull Request.
 
-## Join the community
+## Licencia
 
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Este proyecto está bajo la licencia MIT. Consulta el archivo LICENSE para más detalles.
